@@ -89,7 +89,7 @@ $$
 \mathbb{E}_{q_{\phi}\left(\mathbf{z} | \mathbf{x}^{(i)}\right)}[f(\mathbf{z})]
 &= \int q_{\phi}\left(\mathbf{z} | \mathbf{x}^{(i)}\right)f(\mathbf{z}) d z \tag{7}\\
 &= \int q_{\phi}\left(g_{\phi}(\boldsymbol{\epsilon}, \mathbf{x}^{(i)})\right)f\left(g_{\phi}\left(\boldsymbol{\epsilon}, \mathbf{x}^{(i)}\right)\right)d (g_{\phi}(\boldsymbol{\epsilon}, \mathbf{x}^{(i)}))\tag{8}\\
-&= \int q_{\phi}\left(g_{\phi}(\boldsymbol{\epsilon}, \mathbf{x}^{(i)})\right)f\left(g_{\phi}\left(\boldsymbol{\epsilon}, \mathbf{x}^{(i)}\right)\right) \nabla_{\phi}[g_{\phi}(\boldsymbol{\epsilon}, \mathbf{x}^{(i)})] d\boldsymbol{\epsilon} 
+&= \int q_{\phi}\left(g_{\phi}(\boldsymbol{\epsilon}, \mathbf{x}^{(i)})\right)f\left(g_{\phi}\left(\boldsymbol{\epsilon}, \mathbf{x}^{(i)}\right)\right) \nabla_{\epsilon}[g_{\phi}(\boldsymbol{\epsilon}, \mathbf{x}^{(i)})] d\boldsymbol{\epsilon} 
 \tag{9}\\
 &=\int p(\epsilon)\left[f\left(g_{\phi}\left(\boldsymbol{\epsilon},\mathbf{x}^{(i)}\right)\right)\right]d\epsilon
 \tag{10}\\
@@ -104,7 +104,12 @@ $$
 
 - $\mathrm{(8)}$ 采用定积分里面的换元法 ${\mathbf{Z}}=g_{\phi}(\boldsymbol{\epsilon}, \mathbf{x})$
 
-- $\mathrm{(9)}$ 对换元后的结果进一步计算
+- $\mathrm{(9)}$ 对换元后的结果进一步计算，对 $\epsilon$ 求梯度，即
+  $$
+  \frac{d (g_{\phi}(\boldsymbol{\epsilon}, \mathbf{x}^{(i)}))}{d\boldsymbol{\epsilon}}=\nabla_{\epsilon}[g_{\phi}(\boldsymbol{\epsilon}, \mathbf{x}^{(i)})]\\
+  d (g_{\phi}(\boldsymbol{\epsilon}, \mathbf{x}^{(i)}))=\nabla_{\epsilon}[g_{\phi}(\boldsymbol{\epsilon}, \mathbf{x}^{(i)})]d\boldsymbol{\epsilon}
+  $$
+  
 
 - $\mathrm{(10)}$ 用到了 
   $$
@@ -113,13 +118,14 @@ $$
   &=1\\
   &=\int q_{\phi}(\mathbf{z} | \mathbf{x})dz\\
   &= \int q_{\phi}\left(g_{\phi}(\boldsymbol{\epsilon}, \mathbf{x}^{(i)})\right)d (g_{\phi}(\boldsymbol{\epsilon}, \mathbf{x}^{(i)}))\\
-  &=\int q_{\phi}\left(g_{\phi}(\boldsymbol{\epsilon}, \mathbf{x}^{(i)})\right)\nabla_{\phi}[g_{\phi}(\boldsymbol{\epsilon}, \mathbf{x}^{(i)})]
+  &=\int q_{\phi}\left(g_{\phi}(\boldsymbol{\epsilon}, \mathbf{x}^{(i)})\right)\nabla_{\epsilon}[g_{\phi}(\boldsymbol{\epsilon}, \mathbf{x}^{(i)})]
   d\boldsymbol{\epsilon}\\
   \end{align*}
   $$
   $\text{So, } p(\boldsymbol{\epsilon})=q_{\phi}\left(g_{\phi}(\boldsymbol{\epsilon}, \mathbf{x}^{(i)})\right)\nabla_{\phi}[g_{\phi}(\boldsymbol{\epsilon}, \mathbf{x}^{(i)})]$
 
 - $\mathrm{(11)}$ 将定积分转为期望形式
+
 - $\mathrm{(12)}$ 使用 ${\mathbf{Z}}=g_{\phi}(\boldsymbol{\epsilon}, \mathbf{x})$
 
 所以我们可以得出 
